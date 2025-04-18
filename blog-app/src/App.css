@@ -78,3 +78,33 @@ body.light select {
   color: #000000;
   border-color: #ccc;
 }
+
+/* Placeholder color for dark mode */
+body.dark input::placeholder,
+body.dark textarea::placeholder,
+body.dark select::placeholder {
+  color: #aaa;
+}
+
+/* Placeholder color for light mode */
+body.light input::placeholder,
+body.light textarea::placeholder,
+body.light select::placeholder {
+  color: #6c757d;
+}
+
+body.dark input:focus,
+body.dark textarea:focus,
+body.dark select:focus {
+  border-color: #888;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.1);
+}
+
+body.light input:focus,
+body.light textarea:focus,
+body.light select:focus {
+  border-color: #86b7fe;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}

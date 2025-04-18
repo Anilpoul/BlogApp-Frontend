@@ -1,5 +1,4 @@
-// utils/authUtils.js
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 
 export function isTokenExpired(token) {
     try {
@@ -28,7 +27,8 @@ export function decodeToken(token) {
         return {
             id: decoded.userId,
             email: decoded.sub,
-            role: decoded.role
+            role: decoded.role,
+            username: decoded.username // Assuming the token contains username field
         };
     } catch (error) {
         console.error("Error decoding token:", error);
@@ -36,7 +36,10 @@ export function decodeToken(token) {
     }
 }
 
-// utils/authUtils.js
+export function getUsernameFromToken(token) {
+    const user = decodeToken(token);
+    return user?.username; // Get username from decoded token
+}
 
 export function isAdmin(token) {
     const user = decodeToken(token);
@@ -52,12 +55,10 @@ export function hasAnyRole(token, roles) {
     const user = decodeToken(token);
     return roles.includes(user?.role);
 }
-// utils/authUtils.js
 
 export function autoLogoutIfExpired(token) {
     if (isTokenExpired(token)) {
-        localStorage.removeItem("token"); // remove token from storage
-        window.location.href = "/login"; // redirect to login page or home
+        localStorage.removeItem("token");
+        window.location.href = "/login";
     }
 }
-

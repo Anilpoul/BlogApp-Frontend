@@ -9,7 +9,8 @@ import BlogDetails from './pages/BlogDetails';
 import CreateBlog from './pages/CreateBlog';
 import SearchResults from './components/SearchResults';
 import { Container } from 'react-bootstrap';
-import Profile from "./components/Profile"; // Adjust the path if needed
+import Profile from "./components/Profile";
+import AuthPage from "./components/AuthPage"; // Adjust the path if needed
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
           <Routes>
             {/* Redirect / to /home */}
             <Route path="/" element={<Navigate to="/home" />} />
-
+              {/*<Route path="/login" element={<AuthPage />} />*/}
+              {/*<Route path="/register" element={<AuthPage />} />*/}
+              {/*<Route path="*" element={<Navigate to="/login" replace />} />*/}
             {/* New Home route */}
             <Route path="/home" element={<Home />} />
             <Route path="/posts/:id" element={<BlogDetails />} />
@@ -27,9 +30,8 @@ function App() {
             <Route path="/edit-post/:id" element={<EditPost />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<LoginPage />} />
-              <Route path="/search" element={<SearchResults />} />
-
-              <Route path="/register" element={<RegisterPage />} />
+            <Route path="/search" element={<SearchResults />} />
+            <Route path="/register" element={<RegisterPage />} />
           </Routes>
         </Container>
       </>
