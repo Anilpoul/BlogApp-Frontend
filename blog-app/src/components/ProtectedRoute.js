@@ -6,14 +6,17 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
     const role = localStorage.getItem("role");
     const location = useLocation();
 
+    // If no token, redirect to login page
     if (!token) {
         return <Navigate to={`/login?redirect=${location.pathname}`} replace />;
     }
 
+    // If the user doesn't have the allowed role, redirect to unauthorized page
     if (allowedRoles.length > 0 && !allowedRoles.includes(role)) {
         return <Navigate to="/unauthorized" replace />;
     }
 
+    // If everything is fine, render the children
     return children;
 };
 

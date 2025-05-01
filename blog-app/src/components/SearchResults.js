@@ -34,7 +34,7 @@ const SearchResults = () => {
         <div className="container mt-4">
             <h3>Search Results for "{query}"</h3>
 
-            {/* Pass the results, pagination data, and loading state to BlogList */}
+            {/* Pass showCategoryBar as false to hide category bar */}
             <BlogList
                 posts={results}
                 loading={loading}
@@ -42,6 +42,7 @@ const SearchResults = () => {
                 totalPages={totalPages}
                 setCurrentPage={setCurrentPage} // Pass setter function to handle page change
                 selectedCategory={null}
+                showCategoryBar={false} // Disable category bar in search results
             />
         </div>
     );

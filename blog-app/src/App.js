@@ -10,7 +10,6 @@ import CreateBlog from './pages/CreateBlog';
 import SearchResults from './components/SearchResults';
 import { Container } from 'react-bootstrap';
 import Profile from "./components/Profile";
-import AuthPage from "./components/AuthPage"; // Adjust the path if needed
 
 function App() {
   return (
@@ -18,12 +17,7 @@ function App() {
         <Navigation />
         <Container className="mt-4">
           <Routes>
-            {/* Redirect / to /home */}
             <Route path="/" element={<Navigate to="/home" />} />
-              {/*<Route path="/login" element={<AuthPage />} />*/}
-              {/*<Route path="/register" element={<AuthPage />} />*/}
-              {/*<Route path="*" element={<Navigate to="/login" replace />} />*/}
-            {/* New Home route */}
             <Route path="/home" element={<Home />} />
             <Route path="/posts/:id" element={<BlogDetails />} />
             <Route path="/create" element={<CreateBlog />} />

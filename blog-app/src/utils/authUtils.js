@@ -28,13 +28,14 @@ export function decodeToken(token) {
             id: decoded.userId,
             email: decoded.sub,
             role: decoded.role,
-            username: decoded.username // Assuming the token contains username field
+            username: decoded.username || "" // Safe fallback for username
         };
     } catch (error) {
         console.error("Error decoding token:", error);
         return null;
     }
 }
+
 
 export function getUsernameFromToken(token) {
     const user = decodeToken(token);
@@ -58,7 +59,9 @@ export function hasAnyRole(token, roles) {
 
 export function autoLogoutIfExpired(token) {
     if (isTokenExpired(token)) {
+        alert("Your session has expired, please log in again.");
         localStorage.removeItem("token");
         window.location.href = "/login";
     }
 }
+
